@@ -59,7 +59,7 @@ void load_pc_motion(const char *dirpath)
 			if (boost::filesystem::is_directory(p)) {
 				//ディレクトリは無視
 			} else {
-                std::regex rx(R"(\d{8})");
+				std::regex rx(R"(\d{8})");
 				std::string fleaf = p.filename().string();
 				std::string ext = p.extension().string();
 				int motion_no = 0;
