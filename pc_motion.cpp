@@ -66,15 +66,15 @@ void load_pc_motion(const char *dirpath)
 				sscanf(fleaf.substr(0, 3).c_str(), "%d", &motion_no);
 				std::cout << fleaf << ": No." << motion_no << std::endl;
 				std::ifstream ifs(p.string().c_str());
-                std::smatch m;
-                if (ext == ".txt") {
+				std::smatch m;
+				if (ext == ".txt") {
 					if (std::regex_search(fleaf, m, rx)) {
-						std::cout << "this is backupfile" << std::endl;
+						//std::cout << "this is backupfile" << std::endl;
 					}else {
 						set_motionbuf(xp_mv_motionbuf[motion_no], ifs);
 					}
 					
-				}else if (ext == ".vm"){
+				}else if (ext == ".vm") {
 					set_motionbuf(xp_mv_motionbuf_var[motion_no], ifs);
 				}
 				
