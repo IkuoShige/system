@@ -20,8 +20,9 @@ void load_pc_motion(const char *dirpath)
 			if (boost::filesystem::is_directory(p)) {
 				//ディレクトリは無視
 			} else {
-				std::regex rx(R"(\d{8})");
+				// std::regex rx(R"(\d{8})");
 				std::regex rx2(R"(\d{4})");
+				std::regex rx3(R"(\.txt\.)");
 				std::string fleaf = p.filename().string();
 				std::string ext = p.extension().string();
 				int motion_no = 0;
@@ -31,19 +32,22 @@ void load_pc_motion(const char *dirpath)
 				std::smatch m;
 
 				if (ext == ".txt") {
-					if (!(std::regex_search(fleaf, m, rx))) {
-						std::cout << "motionfile" << std::endl;
-					}else if (!(std::regex_search(fleaf, m, rx2))){
-						std::cout << "this is backupfile" << std::endl;
-					}else {
-						std::cout << "this is backupfile" << std::endl;
-					}
+					if (!(std::regex_search(fleaf, m, rx3))) {
+						if (!(std::regex_search(fleaf, m, rx2))){
+							std::cout << "motionfile" << std::endl;
+						}
+						// std::cout << "this is backupfile" << std::endl;
+					}//else if (std::regex_search(fleaf, m, rx2)){
+						 //std::cout << "this is backupfile" << std::endl;}
+					// else {
+						// std::cout << "this is backupfile" << std::endl;
+					// }
 					
 				}else if (ext == ".vm") {
 						std::cout << "vmfile" << std::endl;
-				}else{
-					std::cout << "this is backupfile" << std::endl;
-				}
+				}//else{
+					// std::cout << "else this is backupfile" << std::endl;
+				// }
 					
 
 				
